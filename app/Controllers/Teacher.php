@@ -66,6 +66,25 @@ class Teacher extends Controller
         }
     }
 
+    public function delete($id){
+        $model = new TeacherModel();
+        $logModel = new LogModel();
+        $teacher = $model->find($id);
+        
+        if (!$teacher) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Teacher not found.']);
+        }
+
+        $deleted = $model->delete($id);
+
+        if ($deleted) {
+            $logModel->addLog('Deleted teacher: ' . $id, 'DELETED');
+            return $this->response->setJSON(['success' => true, 'message' => 'Teacher deleted successfully.']);
+        } else {
+            return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete teacher.']);
+        }
+    }
+
 
 
     public function fetchRecords()
