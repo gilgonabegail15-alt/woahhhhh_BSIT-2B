@@ -36,6 +36,36 @@ class Teacher extends Controller
         }
     }
 
+    public function update(){
+        $model = new TeacherModel();
+        $logModel = new LogModel();
+        $id = $this->request->getPost('id');
+        $name = $this->request->getPost('name');
+        $bday = $this->request->getPost('bday');
+        $address = $this->request->getPost('address');
+
+        $teacherData = [
+            'name'       => $name,
+            'bday'       => $bday,
+            'address'    => $address
+        ];
+
+        $updated = $model->update($id, $teacherData);
+
+        if ($updated) {
+            $logModel->addLog('Teacher has been updated: ' . $name, 'UPDATED');
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Teacher updated successfully.'
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Error updating teacher.'
+            ]);
+        }
+    }
+
 
 
     public function fetchRecords()
