@@ -14,7 +14,7 @@ class Teacher extends Controller
         $data['teacher'] = $model->findAll();
         return view('teacher/index', $data);
     }
-    public function save(){
+    /*public function save(){
         $name = $this->request->getPost('name');
         $bday = $this->request->getPost('bday');
         $address = $this->request->getPost('address');
@@ -34,7 +34,7 @@ class Teacher extends Controller
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save Teacher']);
         }
-    }
+    }*/
 
    
 
