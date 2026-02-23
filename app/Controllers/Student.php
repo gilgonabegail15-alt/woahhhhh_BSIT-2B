@@ -36,6 +36,7 @@ class Student extends Controller
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save student']);
         }
     }
+    
 
     public function update(){
         $model = new StudentModel();

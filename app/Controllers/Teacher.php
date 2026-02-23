@@ -14,6 +14,28 @@ class Teacher extends Controller
         $data['teacher'] = $model->findAll();
         return view('teacher/index', $data);
     }
+    public function save(){
+        $name = $this->request->getPost('name');
+        $bday = $this->request->getPost('bday');
+        $address = $this->request->getPost('address');
+
+        $model = new TeacherModel();
+        $logModel = new LogModel();
+
+        $data = [
+            'name'       => $name,
+            'bday'       => $bday,
+            'address'    => $address
+        ];
+
+        if ($model->insert($data)) {
+            $logModel->addLog('New Teacher has been added: ' . $name, 'ADD');
+            return $this->response->setJSON(['status' => 'success']);
+        } else {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save Teacher']);
+        }
+    }
+
 
 
     public function fetchRecords()
