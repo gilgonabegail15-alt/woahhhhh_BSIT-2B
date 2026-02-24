@@ -15,7 +15,7 @@ class Student extends Controller
         return view('student/index', $data);
     }
 
-    public function save(){
+   /* public function save(){
         $name = $this->request->getPost('name');
         $bday = $this->request->getPost('bday');
         $address = $this->request->getPost('address');
@@ -96,7 +96,7 @@ public function delete($id){
         return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete user.']);
     }
 }
-
+*/
 public function fetchRecords()
 {
     $request = service('request');
