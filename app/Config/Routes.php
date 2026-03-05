@@ -47,5 +47,24 @@ $routes->post('teacher/update', 'Teacher::update');
 $routes->delete('teacher/delete/(:num)', 'Teacher::delete/$1');
 $routes->post('teacher/fetchRecords', 'Teacher::fetchRecords');
 
+//Parents
+
+// Parents Routes
+$routes->get('/parents', 'Parents::index');
+$routes->get('/parents/create', 'Parents::create');
+$routes->post('/parents/save', 'Parents::save');
+$routes->get('/parents/edit/(:num)', 'Parents::edit/$1');
+$routes->post('/parents/update/(:num)', 'Parents::update/$1');
+$routes->get('/parents/delete/(:num)', 'Parents::delete/$1');
+
+// Profiling Acounts routes
+
+$routes->get('/students', 'Students::index');
+$routes->post('/students/save', 'Stusdents::save');
+$routes->get('students/(:segment)', 'Students::edit/$1');
+$routes->post('students/update', 'Students::update');
+$routes->delete('students/delete/(:num)', 'Students::delete/$1');
+$routes->post('students/fetchRecords', 'Students::fetchRecords');
+
 // Logs routes for admin
 $routes->get('/log', 'Logs::log');
